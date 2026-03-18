@@ -15,6 +15,6 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Build image
-        run: docker build -t damragnarock/gestionretard:latest .
+        run: docker build -t damragnarock/recommendation_ia:latest .
       - name: Push image
-        run: docker push damragnarock/gestionretard:latest
+        run: docker push damragnarock/recommendation_ia:latest
