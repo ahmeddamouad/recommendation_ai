@@ -1,0 +1,20 @@
+name: Docker Auto Deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cloner le repo
+        uses: actions/checkout@v3
+      - name: Login Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build image
+        run: docker build -t saidwahidtekno/gestionretard:latest .
+      - name: Push image
+        run: docker push saidwahidtekno/gestionretard:latest
